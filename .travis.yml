@@ -19,3 +19,17 @@ after_success:
   - docker push mherzner/multi-nginx
   - docker push mherzner/multi-server
   - docker push mherzner/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-2-797093108317
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id:
+    secure: $ACCESS_KEY"
+  secret_access_key:
+    secure: "$SECRET_ACCESS_KEY"
